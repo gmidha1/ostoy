@@ -88,8 +88,6 @@ jobs:
     name: Build and push to quay
     runs-on: ubuntu-latest
     environment: build
-    runs:
-      using: 'node20'
 
     outputs:
       ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
