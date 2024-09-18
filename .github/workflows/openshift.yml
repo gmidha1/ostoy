@@ -124,7 +124,7 @@ jobs:
       uses: redhat-actions/s2i-build@v2
       with:
         path_context: './'
-        builder_image: 'registry.access.redhat.com/ubi8/nodejs-16'
+        builder_image: 'registry.access.redhat.com/rhel8/nodejs-18'
         image: 'gmidha/ostoy'
     
 
