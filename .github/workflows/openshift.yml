@@ -86,7 +86,7 @@ jobs:
 
   image-ci-cd:
     name: Build and push to quay
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     environment: build
 
     outputs:
@@ -112,7 +112,7 @@ jobs:
     # https://github.com/redhat-actions/buildah-build#readme
     - name: Build from Dockerfile
       id: build_image_msvc
-      uses: redhat-actions/s2i-build@v2
+      uses: redhat-actions/s2i-build@v2.4
       with:
         path_context: 'microservice'
         builder_image: 'ubi8/nodejs-22'
@@ -121,7 +121,7 @@ jobs:
         #Setup S2i and Build Frontend container image
     - name: Steup and Build
       id: build_image_frontend
-      uses: redhat-actions/s2i-build@v2
+      uses: redhat-actions/s2i-build@v2.4
       with:
         path_context: './'
         builder_image: 'registry.access.redhat.com/ubi9/nodejs-20:1-59.1725850623'
@@ -131,7 +131,7 @@ jobs:
     # https://github.com/redhat-actions/push-to-registry#readme
     - name: Push to Quay
       id: push-image
-      uses: redhat-actions/push-to-registry@v2
+      uses: redhat-actions/push-to-registry@v2.4
       with:
         image: ${{ steps.build_image_msvc.outputs.image }}
         tags: ${{ steps.build_image_msvc.outputs.tags }}
